@@ -1,2 +1,0 @@
-# eDohtar
-Projekt
