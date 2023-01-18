@@ -5,37 +5,12 @@ import { faHouse, faUser, faClipboardList, faList, faReceipt } from '@fortawesom
 import { NavigationContainer,  } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import {SignedIn, SignedOut } from './src';
-import { isSignedIn } from './src/auth';
+import Login from './src/screens/Login'
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      signedIn: false,
-      checkedSignIn: false
-    };
-  }
-
-  componentDidMount() {
-    isSignedIn()
-      .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
-      .catch(err => alert("An error occurred"));
-  }
-
-  render() {
-    const { checkedSignIn, signedIn } = this.state;
-
-    // If we haven't checked AsyncStorage yet, don't render anything (better ways to do this)
-    if (!checkedSignIn) {
-      return null;
+    render() {
+        return(
+                <Login/>
+        )
     }
-
-    if (signedIn) {
-      return <SignedIn />;
-    } else {
-      return <SignedOut />;
-    }
-  }
 }

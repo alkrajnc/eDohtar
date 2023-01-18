@@ -5,10 +5,7 @@ import { faHouse, faUser, faClipboardList, faList, faReceipt } from '@fortawesom
 import { NavigationContainer,  } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// import ReceptiScreen from './src/pages/recepti';
-import NapotniceScreen from './src/pages/napotnice';
-import HomeScreen from './src/pages/obvestila';
-import UporabnikScreen from './src/pages/uporabnik';
+import { NapotniceScreen, HomeScreen, UporabnikScreen, ReceptiScreen  } from './pages'
 
 
 const Tab = createBottomTabNavigator();
@@ -43,7 +40,7 @@ function SignedIn() {
                     color={color}
                   />
                 );
-              } /*else if (route.name === 'Recepti') {
+              } else if (route.name === 'Recepti') {
                 return (
                   <FontAwesomeIcon
                     icon={faReceipt}
@@ -52,8 +49,7 @@ function SignedIn() {
                   />
                 );
               }
-              <Tab.Screen name="Recepti" options={{ tabBarBadge: 1 }} component={ReceptiScreen} />
-              */
+
             },
             tabBarInactiveTintColor: 'gray',
             tabBarActiveTintColor: '#3ebd60',
@@ -62,6 +58,7 @@ function SignedIn() {
           <Tab.Screen name="Domov" component={HomeScreen} />
           <Tab.Screen name="Napotnice" component={NapotniceScreen} />
           <Tab.Screen name="Uporabnik" component={UporabnikScreen} />
+          <Tab.Screen name="Recepti" options={{ tabBarBadge: 1 }} component={ReceptiScreen} />
         </Tab.Navigator>
       </NavigationContainer>
   );
@@ -133,7 +130,7 @@ const styles = StyleSheet.create({
       height: 48,
       alignContent: 'center',
       alignItems: 'center',
-  
+
   },
   navimages:{
       width: 128,
@@ -141,7 +138,7 @@ const styles = StyleSheet.create({
       padding: 10,
       color: 'white',
   },
-  
+
 })
 
 
