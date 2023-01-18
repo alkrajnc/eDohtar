@@ -1,6 +1,8 @@
 import React, {Component, useEffect, useState } from 'react';
 import {StyleSheet, TouchableOpacity, Text, View, Image, ScrollView} from 'react-native';
 
+
+
 const styles = StyleSheet.create({
     card: {
         backgroundColor: '#3cb55c',
@@ -51,21 +53,15 @@ const styles = StyleSheet.create({
     },
   })
 
-
-
-
-export default function NapotniceScreen() {
-    let cards = [{"title" : "Obvestilo0","dodatno" : "Vec o obvestilu"},{"title" : "Obvestilo1","dodatno" : "Vec o obvestilu1"}, {"title" : "Obvestilo134","dodatno" : "Vec3242fsdff o obvestilu1"}];
+export default function UporabnikScreen() {
     return (
-      <ScrollView>
-        <View style={{ flex: 1}}>
-          {cards.map((card, index) => 
-          <View key={index} style={styles.cardNapotnica}>
-            <Text key={index} style={styles.cardnaslov}>{card.title}</Text>
-            <Text key={`${index}var`} style={styles.cardbody}>{card.dodatno}</Text>
-          </View>)
-          }
-        </View>
-      </ScrollView>
+      <View style={{ flex: 1}}>
+        <Text>Uporabnik</Text>
+        <Button
+            backgroundColor="#03A9F4"
+            title="SIGN OUT"
+            onPress={() => onSignOut().then(() => navigation.navigate("SignedOut"))}
+        />
+      </View>
     );
   }
