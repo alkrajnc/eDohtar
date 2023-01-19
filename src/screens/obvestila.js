@@ -66,7 +66,7 @@ export default function HomeScreen() {
 
 
     useEffect(() => {
-        fetch('http://10.0.2.2:3000/obvestila')
+        fetch('http://109.182.70.39:3000/obvestila')
         .then((response) => response.json())
         .then((json) => setData(json))
         .catch((error) => console.error(error))
@@ -80,9 +80,9 @@ export default function HomeScreen() {
         <View style={{ flex: 1}}>
             {data.map((element, index) =>
           <View key={index} style={styles.card}>
-              <Text key={index} style={styles.cardnaslov}>{element.obvestilo_naslov}</Text>
-              <Text key={`${index}var`} style={styles.cardbody}>{element.obvestilo_body}</Text>
-              <Text style={styles.cardtime} >{element.obvestilo_time}</Text>
+              <Text key={index} style={styles.cardnaslov}>{element.ime_obvestila}</Text>
+              <Text key={`${index}var`} style={styles.cardbody}>{element.podrobno_obvestilo}</Text>
+              <Text style={styles.cardtime} >{element.cas_obvestila}</Text>
           </View>)
           }
         </View>

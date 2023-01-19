@@ -49,20 +49,38 @@ const styles = StyleSheet.create({
         flex: 0,
         margin: 5,
     },
+    cardtime: {
+        color: 'gray',
+        margin: 10,
+    },
   })
 
 
 
 
 export default function NapotniceScreen() {
-    let cards = [{"title" : "Obvestilo0","dodatno" : "Vec o obvestilu"},{"title" : "Obvestilo1","dodatno" : "Vec o obvestilu1"}, {"title" : "Obvestilo134","dodatno" : "Vec3242fsdff o obvestilu1"}];
+
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+
+
+    useEffect(() => {
+        fetch('http://109.182.70.39:3000/napotnice')
+        .then((response) => response.json())
+        .then((json) => setData(json))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+        }, []);
+
+
     return (
       <ScrollView>
         <View style={{ flex: 1}}>
-          {cards.map((card, index) => 
+          {data.map((element, index) =>
           <View key={index} style={styles.cardNapotnica}>
-            <Text key={index} style={styles.cardnaslov}>{card.title}</Text>
-            <Text key={`${index}var`} style={styles.cardbody}>{card.dodatno}</Text>
+            <Text key={index} style={styles.cardnaslov}>{element.ime_napotnice}</Text>
+            <Text key={`${index}var`} style={styles.cardbody}>{element.podrobno_napotnia}</Text>
+              <Text style={styles.cardtime}>{element.cas_napotnica}</Text>
           </View>)
           }
         </View>

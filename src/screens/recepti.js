@@ -86,7 +86,7 @@ export default function ReceptiScreen() {
 
 
     useEffect(() => {
-      fetch('http://10.0.2.2:3000/recept')
+        fetch('http://109.182.70.39:3000/recept')
         .then((response) => response.json())
         .then((json) => setData(json))
         .catch((error) => console.error(error))
