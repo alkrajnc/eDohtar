@@ -3,6 +3,9 @@ import {StyleSheet, Button, Text, TextInput, View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import Main from "../index";
+import {onSignIn} from "../auth";
+
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
@@ -47,6 +50,13 @@ const styles = StyleSheet.create({
         },
 })
 
+function MyStack() {
+    return (
+            <Stack.Navigator>
+                <Stack.Screen name="Home" component={Main} />
+            </Stack.Navigator>
+            );
+}
 
 export default class Login extends Component {
      constructor(props) {
@@ -58,7 +68,7 @@ export default class Login extends Component {
                     isLoading: true,
                 };
         }
-
+    /*
     async auth() {
         try {
             const response = await fetch('https://reactnative.dev/movies.json', {
@@ -84,7 +94,7 @@ export default class Login extends Component {
     componentDidMount() {
         this.getMovies();
     }
-
+    */
     render() {
         return(
 
@@ -97,7 +107,7 @@ export default class Login extends Component {
                     <TextInput secureTextEntry placeholder="Password..." style={styles.password} onChangeText={(pass) => this.setState({pass})}/>
                     <Button
                         title="Login"
-                        onPress={() => {console.log('dsfs')}}
+                        onPress={onSignIn}
                         style={styles.button}
                     />
                     </View>

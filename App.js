@@ -16,13 +16,15 @@ export default class App extends React.Component {
                 this.state = null;
         }
     render() {
-        if (isSignedIn()){
+        if (isSignedIn){
+            return(
+                    <Login/>
+            )
+        } else {
             return(
                     <Main/>
-            )
+                    )
         }
-        return(
-                <Login/>
-        )
+
     }
 }
