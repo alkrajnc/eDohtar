@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 
 export default function Main() {
   return (
-      <NavigationContainer>
+
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
@@ -63,7 +63,6 @@ export default function Main() {
           <Tab.Screen name="Recepti" options={{ tabBarBadge: 1 }} component={ReceptiScreen} />
           <Tab.Screen name="Uporabnik" component={UporabnikScreen} />
         </Tab.Navigator>
-      </NavigationContainer>
   );
 }
 

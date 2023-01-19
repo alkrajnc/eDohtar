@@ -5,7 +5,7 @@ import { faHouse, faUser, faClipboardList, faList, faReceipt } from '@fortawesom
 import { NavigationContainer,  } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Login from './src/screens/Login';
+import Screen from './src/screens/Login';
 import { isSignedIn } from "./src/auth";
 import Main from './src/index';
 
@@ -18,7 +18,7 @@ export default class App extends React.Component {
     render() {
         if (isSignedIn){
             return(
-                    <Login/>
+                    <Screen/>
             )
         } else {
             return(

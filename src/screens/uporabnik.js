@@ -54,13 +54,15 @@ const styles = StyleSheet.create({
   })
 
 export default function UporabnikScreen() {
+
+
     return (
       <View style={{ flex: 1}}>
         <Text>Uporabnik</Text>
         <Button
             backgroundColor="#03A9F4"
             title="SIGN OUT"
-            onPress={() => onSignOut().then(() => navigation.navigate("SignedOut"))}
+            onPress={() => this.props.navigation.navigate('Login')}
         />
       </View>
     );

@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+import { createStackNavigator } from '@react-navigation/stack';
 import React, {Component, useState} from 'react';
 import {StyleSheet, Button, Text, TextInput, View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -5,6 +7,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Main from "../index";
 import {onSignIn} from "../auth";
+
+const Stack = createStackNavigator();
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -50,15 +54,20 @@ const styles = StyleSheet.create({
         },
 })
 
-function MyStack() {
+export default function Screen() {
     return (
-            <Stack.Navigator>
-                <Stack.Screen name="Home" component={Main} />
-            </Stack.Navigator>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name="Login" component={Login}/>
+                    <Stack.Screen name="Home" component={Main} />
+                </Stack.Navigator>
+            </NavigationContainer>
+
             );
 }
 
-export default class Login extends Component {
+
+class Login extends Component {
      constructor(props) {
                 super(props);
                 this.state = {text: ''};
@@ -107,7 +116,7 @@ export default class Login extends Component {
                     <TextInput secureTextEntry placeholder="Password..." style={styles.password} onChangeText={(pass) => this.setState({pass})}/>
                     <Button
                         title="Login"
-                        onPress={onSignIn}
+                        onPress={() => this.props.navigation.navigate('Home')}
                         style={styles.button}
                     />
                     </View>
