@@ -53,7 +53,38 @@ export default class Login extends Component {
                 super(props);
                 this.state = {text: ''};
                 this.state = {pass: ''};
+                this.state = {
+                    data: [],
+                    isLoading: true,
+                };
         }
+
+    async auth() {
+        try {
+            const response = await fetch('https://reactnative.dev/movies.json', {
+                method: 'POST',
+                mode: CORS,
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    },
+                body: {
+                    user: "${this.state.text}",
+                    pass: "${this.state.pass}"
+                }});
+            const json = await response.json();
+            this.setState({data: json.movies});
+        } catch (error) {
+            console.log(error);
+        } finally {
+            this.setState({isLoading: false});
+        }
+    }
+
+    componentDidMount() {
+        this.getMovies();
+    }
+
     render() {
         return(
 
@@ -66,7 +97,7 @@ export default class Login extends Component {
                     <TextInput secureTextEntry placeholder="Password..." style={styles.password} onChangeText={(pass) => this.setState({pass})}/>
                     <Button
                         title="Login"
-                        onPress={() => navigate('')}
+                        onPress={() => {console.log('dsfs')}}
                         style={styles.button}
                     />
                     </View>

@@ -1,7 +1,7 @@
 import React, {Component, useEffect, useState } from 'react';
-import {StyleSheet, TouchableOpacity, Text, View, Image, ScrollView} from 'react-native';
+import {StyleSheet, TouchableOpacity, Text, View, Button, Image, ScrollView} from 'react-native';
 
-
+import onSignOut from '../auth'
 
 const styles = StyleSheet.create({
     card: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
       padding: 10,
       borderRadius: 10,
       borderWidth: 2,
-  
+
     },
     cardRecepti: {
       backgroundColor: '#37424f',
@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
       padding: 10,
       borderRadius: 10,
       borderWidth: 2,
-  
+
     },
     cardbody: {
         color: 'white',
         margin: 24,
-  
+
     },
     cardnaslov: {
         color: '#ffffff',

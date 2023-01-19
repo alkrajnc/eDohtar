@@ -5,8 +5,11 @@ import { faHouse, faUser, faClipboardList, faList, faReceipt } from '@fortawesom
 import { NavigationContainer,  } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { NapotniceScreen, HomeScreen, UporabnikScreen, ReceptiScreen  } from './pages'
 
+import NapotniceScreen from './screens/napotnice'
+import HomeScreen from './screens/obvestila'
+import ReceptiScreen from './screens/recepti'
+import UporabnikScreen from './screens/uporabnik'
 
 const Tab = createBottomTabNavigator();
 
@@ -57,8 +60,8 @@ export default function Main() {
         >
           <Tab.Screen name="Domov" component={HomeScreen} />
           <Tab.Screen name="Napotnice" component={NapotniceScreen} />
-          <Tab.Screen name="Uporabnik" component={UporabnikScreen} />
           <Tab.Screen name="Recepti" options={{ tabBarBadge: 1 }} component={ReceptiScreen} />
+          <Tab.Screen name="Uporabnik" component={UporabnikScreen} />
         </Tab.Navigator>
       </NavigationContainer>
   );

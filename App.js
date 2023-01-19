@@ -11,6 +11,10 @@ import Main from './src/index';
 
 
 export default class App extends React.Component {
+    constructor(props) {
+                super(props);
+                this.state = null;
+        }
     render() {
         if (isSignedIn()){
             return(
