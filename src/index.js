@@ -10,7 +10,7 @@ import { NapotniceScreen, HomeScreen, UporabnikScreen, ReceptiScreen  } from './
 
 const Tab = createBottomTabNavigator();
 
-function SignedIn() {
+export default function Main() {
   return (
       <NavigationContainer>
         <Tab.Navigator
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
 })
 
 
-export default SignedIn;
+
 
 
 
