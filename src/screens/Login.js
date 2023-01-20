@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {StyleSheet, Button, Text, TextInput, View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
-        backgroundColor: '#39464d'
+        backgroundColor: 'white'
         },
     button: {
         backgroundColor: "lightblue",
@@ -31,14 +31,14 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         width: "70%",
         margin: 5,
-        color: 'white',
+        color: 'black',
     },
     password: {
         borderBottomColor: "blue",
         borderBottomWidth: 2,
         width: "70%",
         margin: 5,
-        color: 'white',
+        color: 'black',
     },
     naslov: {
         fontSize: 34,
@@ -66,6 +66,31 @@ export default function Screen() {
             );
 }
 
+function authUser(username, userpass) {
+
+    const [data, setData] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch('http://109.182.70.39:3000/users', {
+            method: 'POST',
+            mode: 'CORS',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: {
+                user: username,
+                pass: userpass,
+            }
+        })
+        .then((response) => response.json())
+        .then((json) => setData(json))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+        }, []);
+}
+
 
 class Login extends Component {
      constructor(props) {
@@ -77,33 +102,8 @@ class Login extends Component {
                     isLoading: true,
                 };
         }
-    /*
-    async auth() {
-        try {
-            const response = await fetch('https://reactnative.dev/movies.json', {
-                method: 'POST',
-                mode: CORS,
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                    },
-                body: {
-                    user: "${this.state.text}",
-                    pass: "${this.state.pass}"
-                }});
-            const json = await response.json();
-            this.setState({data: json.movies});
-        } catch (error) {
-            console.log(error);
-        } finally {
-            this.setState({isLoading: false});
-        }
-    }
 
-    componentDidMount() {
-        this.getMovies();
-    }
-    */
+
     render() {
         return(
 
