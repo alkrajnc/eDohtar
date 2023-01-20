@@ -80,8 +80,8 @@ function authUser(username, userpass) {
                 'Content-Type': 'application/json',
             },
             body: {
-                user: username,
-                pass: userpass,
+                "user": username,
+                "pass": userpass,
             }
         })
         .then((response) => response.json())
@@ -89,6 +89,8 @@ function authUser(username, userpass) {
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
         }, []);
+    
+
 }
 
 
