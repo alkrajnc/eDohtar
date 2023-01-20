@@ -75,6 +75,10 @@ const styles = StyleSheet.create({
         padding: 10,
         color: 'white',
     },
+    recepti: {
+        width: 128,
+        height: 128,
+    },
 
   })
 
@@ -100,6 +104,10 @@ export default function ReceptiScreen() {
           <View key={index} style={styles.cardRecepti}>
             <Text key={index} style={styles.cardnaslov}>{card.ime_recepta}</Text>
             <Text key={`${index}var`} style={styles.cardbody}>{card.podrobno_recept}</Text>
+              <Image
+                  style={styles.recepti}
+                  source={{uri:`109.182.70.39/images/${card.slika_recepta}.png`}}
+              />
           </View>)
           }
         </View>
